@@ -31,6 +31,18 @@ for ontology in vocabulary/*.ttl; do
     -lang en \
     -noPlaceHolderText \
     -webVowl
+
+  # WIDOCO's conneg rules redirect to relative targets (e.g. `index-en.html`),
+  # which Apache turns into an absolute Location using the connection scheme.
+  # Behind the TLS-terminating ingress that scheme is http, so clients take a
+  # needless http->https hop. Rewrite the targets to absolute https URLs (the
+  # host and path come from the request at run time) so the Location is correct.
+  htaccess="build/${module}/.htaccess"
+  if [ -f "${htaccess}" ]; then
+    sed -E 's#^(RewriteRule \^\$ )([A-Za-z0-9._-]+)#\1https://%{HTTP_HOST}%{REQUEST_URI}\2#' \
+      "${htaccess}" > "${htaccess}.tmp"
+    mv "${htaccess}.tmp" "${htaccess}"
+  fi
 done
 
 echo "Done. Generated documentation in build/."
