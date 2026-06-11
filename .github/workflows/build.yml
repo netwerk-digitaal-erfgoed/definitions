@@ -33,6 +33,9 @@ jobs:
             type=ref,event=branch
             type=sha
             type=raw,value=latest,enable={{is_default_branch}}
+            # 14-digit timestamp tag that the infrastructure chart's default
+            # numerical image policy tracks, so Flux auto-deploys each push.
+            type=raw,value={{date 'YYYYMMDDHHmmss'}},enable={{is_default_branch}}
 
       - uses: docker/build-push-action@v6
         with:
