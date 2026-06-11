@@ -1,0 +1,23 @@
+@prefix iiif:    <https://def.nde.nl/iiif#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<https://def.nde.nl/iiif> a owl:Ontology ;
+    dcterms:title "NDE IIIF vocabulary"@en ;
+    rdfs:label "NDE IIIF vocabulary"@en ;
+    dcterms:description "Terms used by the dataset knowledge graph when sampling and validating IIIF resources in a dataset."@en ;
+    dcterms:publisher <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:creator <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    dcterms:created "2026-06-11"^^xsd:date ;
+    vann:preferredNamespacePrefix "iiif" ;
+    vann:preferredNamespaceUri "https://def.nde.nl/iiif#" ;
+    owl:versionInfo "0.1.0" .
+
+iiif:manifest-sample a owl:ObjectProperty ;
+    rdfs:label "manifest sample"@en ;
+    rdfs:comment "Intermediate predicate carrying a sampled IIIF manifest IRI between pipeline stages. It is consumed during processing and does not appear in published output."@en ;
+    rdfs:isDefinedBy <https://def.nde.nl/iiif> .

@@ -1,0 +1,36 @@
+@prefix probe:   <https://def.nde.nl/probe#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix void:    <http://rdfs.org/ns/void#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<https://def.nde.nl/probe> a owl:Ontology ;
+    dcterms:title "NDE Probe vocabulary"@en ;
+    rdfs:label "NDE Probe vocabulary"@en ;
+    dcterms:description "Terms recording which capabilities the dataset knowledge graph detected in a dataset, such as whether it exposes media."@en ;
+    dcterms:publisher <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:creator <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    dcterms:created "2026-06-11"^^xsd:date ;
+    vann:preferredNamespacePrefix "probe" ;
+    vann:preferredNamespaceUri "https://def.nde.nl/probe#" ;
+    owl:versionInfo "0.1.0" .
+
+probe:Capability a owl:Class ;
+    rdfs:label "Capability"@en ;
+    rdfs:comment "A feature that the dataset knowledge graph can detect in a dataset by inspecting its data."@en ;
+    rdfs:isDefinedBy <https://def.nde.nl/probe> .
+
+probe:detects a owl:ObjectProperty ;
+    rdfs:label "detects"@en ;
+    rdfs:comment "Links a dataset, or a void:Subset of one, to a capability observed in it. The statement is emitted only when the capability is present, so its mere presence is the positive signal."@en ;
+    rdfs:domain void:Dataset ;
+    rdfs:range probe:Capability ;
+    rdfs:isDefinedBy <https://def.nde.nl/probe> .
+
+probe:media a probe:Capability , owl:NamedIndividual ;
+    rdfs:label "media"@en ;
+    rdfs:comment "The dataset exposes media objects, for example images, thumbnails or content URLs."@en ;
+    rdfs:isDefinedBy <https://def.nde.nl/probe> .

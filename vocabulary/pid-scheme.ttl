@@ -1,0 +1,33 @@
+@prefix pid:     <https://def.nde.nl/pid-scheme#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<https://def.nde.nl/pid-scheme> a owl:Ontology , skos:ConceptScheme ;
+    dcterms:title "NDE Persistent Identifier Scheme vocabulary"@en ;
+    rdfs:label "NDE Persistent Identifier Scheme vocabulary"@en ;
+    dcterms:description "Controlled list of persistent identifier (PID) schemes that the dataset knowledge graph recognises in dataset subject URIs."@en ;
+    dcterms:publisher <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:creator <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    dcterms:created "2026-06-11"^^xsd:date ;
+    vann:preferredNamespacePrefix "pid-scheme" ;
+    vann:preferredNamespaceUri "https://def.nde.nl/pid-scheme#" ;
+    owl:versionInfo "0.1.0" .
+
+pid:ark a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "ARK"@en ;
+    skos:prefLabel "ARK"@en ;
+    skos:definition "Archival Resource Key, a persistent identifier scheme; recognised in subject namespaces under n2t.net or arks.org ark: prefixes."@en ;
+    skos:inScheme <https://def.nde.nl/pid-scheme> ;
+    rdfs:isDefinedBy <https://def.nde.nl/pid-scheme> .
+
+pid:handle a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "Handle"@en ;
+    skos:prefLabel "Handle"@en ;
+    skos:definition "The Handle System persistent identifier scheme; recognised in subject namespaces under hdl.handle.net or handle.net prefixes."@en ;
+    skos:inScheme <https://def.nde.nl/pid-scheme> ;
+    rdfs:isDefinedBy <https://def.nde.nl/pid-scheme> .

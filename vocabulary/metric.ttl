@@ -1,0 +1,68 @@
+@prefix metric:  <https://def.nde.nl/metric#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dqv:     <http://www.w3.org/ns/dqv#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<https://def.nde.nl/metric> a owl:Ontology ;
+    dcterms:title "NDE Metric vocabulary"@en ;
+    rdfs:label "NDE Metric vocabulary"@en ;
+    dcterms:description "Quality metrics that the dataset knowledge graph computes per dataset and records as DQV quality measurements."@en ;
+    dcterms:publisher <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:creator <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    dcterms:created "2026-06-11"^^xsd:date ;
+    vann:preferredNamespacePrefix "metric" ;
+    vann:preferredNamespaceUri "https://def.nde.nl/metric#" ;
+    owl:versionInfo "0.1.0" .
+
+metric:schema-ap-nde-sample-conformance a dqv:Metric , owl:NamedIndividual ;
+    rdfs:label "SCHEMA-AP-NDE sample conformance"@en ;
+    skos:definition "Whether the validated sample of a dataset conforms to the SCHEMA-AP-NDE application profile."@en ;
+    dqv:expectedDataType xsd:boolean ;
+    rdfs:isDefinedBy <https://def.nde.nl/metric> .
+
+metric:quads-validated a dqv:Metric , owl:NamedIndividual ;
+    rdfs:label "quads validated"@en ;
+    skos:definition "Number of quads the validator inspected when checking the sample, a coverage indicator for the conformance result."@en ;
+    dqv:expectedDataType xsd:integer ;
+    rdfs:isDefinedBy <https://def.nde.nl/metric> .
+
+metric:samples-per-class a dqv:Metric , owl:NamedIndividual ;
+    rdfs:label "samples per class"@en ;
+    skos:definition "Number of resources sampled per class when building the validation sample."@en ;
+    dqv:expectedDataType xsd:integer ;
+    rdfs:isDefinedBy <https://def.nde.nl/metric> .
+
+metric:subject-uris-sampled a dqv:Metric , owl:NamedIndividual ;
+    rdfs:label "subject URIs sampled"@en ;
+    skos:definition "Number of subject URIs sampled from the dataset for resolution testing."@en ;
+    dqv:expectedDataType xsd:integer ;
+    rdfs:isDefinedBy <https://def.nde.nl/metric> .
+
+metric:subject-uris-resolved a dqv:Metric , owl:NamedIndividual ;
+    rdfs:label "subject URIs resolved"@en ;
+    skos:definition "Number of sampled subject URIs that dereferenced successfully."@en ;
+    dqv:expectedDataType xsd:integer ;
+    rdfs:isDefinedBy <https://def.nde.nl/metric> .
+
+metric:subject-namespace-durable a dqv:Metric , owl:NamedIndividual ;
+    rdfs:label "subject namespace durable"@en ;
+    skos:definition "Whether the dataset’s subject URI namespace is considered durable, that is, not a known non-durable vendor namespace."@en ;
+    dqv:expectedDataType xsd:boolean ;
+    rdfs:isDefinedBy <https://def.nde.nl/metric> .
+
+metric:manifests-sampled a dqv:Metric , owl:NamedIndividual ;
+    rdfs:label "manifests sampled"@en ;
+    skos:definition "Number of IIIF manifests sampled from the dataset for validation."@en ;
+    dqv:expectedDataType xsd:integer ;
+    rdfs:isDefinedBy <https://def.nde.nl/metric> .
+
+metric:manifests-validated a dqv:Metric , owl:NamedIndividual ;
+    rdfs:label "manifests validated"@en ;
+    skos:definition "Number of sampled IIIF manifests that passed validation."@en ;
+    dqv:expectedDataType xsd:integer ;
+    rdfs:isDefinedBy <https://def.nde.nl/metric> .
