@@ -1,0 +1,54 @@
+@prefix srf:     <https://def.nde.nl/subject-resolution-failure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<https://def.nde.nl/subject-resolution-failure> a owl:Ontology , skos:ConceptScheme ;
+    dcterms:title "NDE Subject Resolution Failure vocabulary"@en ;
+    rdfs:label "NDE Subject Resolution Failure vocabulary"@en ;
+    dcterms:description "Reasons a sampled subject URI failed to resolve to a self-describing landing page when the dataset knowledge graph dereferenced it. Used as the value of failure:reason on the prov:Usage qualifying a subject-URI resolution activity."@en ;
+    dcterms:publisher <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:creator <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    dcterms:created "2026-06-12"^^xsd:date ;
+    vann:preferredNamespacePrefix "subject-resolution-failure" ;
+    vann:preferredNamespaceUri "https://def.nde.nl/subject-resolution-failure#" ;
+    owl:versionInfo "0.1.0" .
+
+srf:timeout a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "timeout"@en ;
+    skos:prefLabel "timeout"@en ;
+    skos:definition "Dereferencing the subject URI was aborted because it did not respond within the per-request time budget."@en ;
+    skos:inScheme <https://def.nde.nl/subject-resolution-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/subject-resolution-failure> .
+
+srf:network-error a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "network error"@en ;
+    skos:prefLabel "network error"@en ;
+    skos:definition "The subject URI could not be reached at all: DNS, connection or TLS failure, or the response body could not be read."@en ;
+    skos:inScheme <https://def.nde.nl/subject-resolution-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/subject-resolution-failure> .
+
+srf:http-error a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "HTTP error"@en ;
+    skos:prefLabel "HTTP error"@en ;
+    skos:definition "The subject URI was reached but returned a non-2xx HTTP status after redirects were followed."@en ;
+    skos:inScheme <https://def.nde.nl/subject-resolution-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/subject-resolution-failure> .
+
+srf:wrong-content-type a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "wrong content type"@en ;
+    skos:prefLabel "wrong content type"@en ;
+    skos:definition "The subject URI returned a 2xx response whose Content-Type was not text/html, so it did not land on a human-readable landing page."@en ;
+    skos:inScheme <https://def.nde.nl/subject-resolution-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/subject-resolution-failure> .
+
+srf:no-self-reference a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "no self-reference"@en ;
+    skos:prefLabel "no self-reference"@en ;
+    skos:definition "The subject URI returned an HTML landing page, but its body did not advertise the original URI, so the page does not back-reference the identifier the user followed."@en ;
+    skos:inScheme <https://def.nde.nl/subject-resolution-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/subject-resolution-failure> .

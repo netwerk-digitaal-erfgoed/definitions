@@ -1,0 +1,68 @@
+@prefix mvf:     <https://def.nde.nl/manifest-validation-failure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<https://def.nde.nl/manifest-validation-failure> a owl:Ontology , skos:ConceptScheme ;
+    dcterms:title "NDE Manifest Validation Failure vocabulary"@en ;
+    rdfs:label "NDE Manifest Validation Failure vocabulary"@en ;
+    dcterms:description "Reasons a sampled IIIF Presentation manifest failed validation when the dataset knowledge graph dereferenced it. A 1:1 mirror of the failure values of the @lde/iiif-validator reason enum (its success value excepted); the concept local names match the enum strings so a reason maps to manifest-validation-failure#${reason} with no lookup table. Used as the value of failure:reason on the prov:Usage qualifying an IIIF manifest validation activity."@en ;
+    dcterms:publisher <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:creator <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    dcterms:created "2026-06-12"^^xsd:date ;
+    vann:preferredNamespacePrefix "manifest-validation-failure" ;
+    vann:preferredNamespaceUri "https://def.nde.nl/manifest-validation-failure#" ;
+    owl:versionInfo "0.1.0" .
+
+mvf:timeout a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "timeout"@en ;
+    skos:prefLabel "timeout"@en ;
+    skos:definition "Dereferencing the manifest was aborted because it did not respond within the per-request time budget."@en ;
+    skos:inScheme <https://def.nde.nl/manifest-validation-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/manifest-validation-failure> .
+
+mvf:network-error a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "network error"@en ;
+    skos:prefLabel "network error"@en ;
+    skos:definition "The manifest URL could not be reached at all: DNS, connection or TLS failure, or the response body could not be read."@en ;
+    skos:inScheme <https://def.nde.nl/manifest-validation-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/manifest-validation-failure> .
+
+mvf:http-error a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "HTTP error"@en ;
+    skos:prefLabel "HTTP error"@en ;
+    skos:definition "The manifest URL was reached but returned a non-2xx HTTP status after redirects were followed."@en ;
+    skos:inScheme <https://def.nde.nl/manifest-validation-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/manifest-validation-failure> .
+
+mvf:invalid-json a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "invalid JSON"@en ;
+    skos:prefLabel "invalid JSON"@en ;
+    skos:definition "The manifest URL returned a response that could not be parsed as JSON."@en ;
+    skos:inScheme <https://def.nde.nl/manifest-validation-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/manifest-validation-failure> .
+
+mvf:binary-content a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "binary content"@en ;
+    skos:prefLabel "binary content"@en ;
+    skos:definition "The manifest URL returned binary content rather than the JSON document a IIIF manifest must be."@en ;
+    skos:inScheme <https://def.nde.nl/manifest-validation-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/manifest-validation-failure> .
+
+mvf:not-a-manifest a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "not a manifest"@en ;
+    skos:prefLabel "not a manifest"@en ;
+    skos:definition "The manifest URL returned a JSON document that is not a IIIF Presentation Manifest."@en ;
+    skos:inScheme <https://def.nde.nl/manifest-validation-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/manifest-validation-failure> .
+
+mvf:does-not-load a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "does not load"@en ;
+    skos:prefLabel "does not load"@en ;
+    skos:definition "The manifest document loaded but the validator could not process it into a usable IIIF Presentation Manifest."@en ;
+    skos:inScheme <https://def.nde.nl/manifest-validation-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/manifest-validation-failure> .

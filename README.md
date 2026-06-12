@@ -13,6 +13,9 @@ Each module is a small vocabulary whose terms are minted and used by the
 | `metric` | `https://def.nde.nl/metric#` | DQV quality metrics computed per dataset. |
 | `pid-scheme` | `https://def.nde.nl/pid-scheme#` | Persistent identifier schemes recognised in subject URIs. |
 | `iiif` | `https://def.nde.nl/iiif#` | Terms used when sampling and validating IIIF resources. |
+| `failure` | `https://def.nde.nl/failure#` | The `failure:reason` predicate recording why an individual sampled resource failed. |
+| `subject-resolution-failure` | `https://def.nde.nl/subject-resolution-failure#` | Reasons a sampled subject URI failed to resolve. |
+| `manifest-validation-failure` | `https://def.nde.nl/manifest-validation-failure#` | Reasons a sampled IIIF manifest failed validation (mirrors the `@lde/iiif-validator` reason enum). |
 
 The vocabularies use **hash URIs**, so each module is a single document: the
 term `probe#detects` is defined in the document served at `/probe`, and the
