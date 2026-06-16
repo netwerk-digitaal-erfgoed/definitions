@@ -10,7 +10,7 @@
 <https://def.nde.nl/failure> a owl:Ontology ;
     dcterms:title "NDE Sample Failure vocabulary"@en ;
     rdfs:label "NDE Sample Failure vocabulary"@en ;
-    dcterms:description "Terms the dataset knowledge graph uses to record why an individual sampled resource – a subject URI or an IIIF manifest – failed when it was dereferenced or validated."@en ;
+    dcterms:description "Terms the dataset knowledge graph uses to record why an individual sampled or fetched resource – a subject URI, an IIIF manifest, or a distribution – failed when it was dereferenced, parsed or validated."@en ;
     dcterms:publisher <https://netwerkdigitaalerfgoed.nl/> ;
     dcterms:creator <https://netwerkdigitaalerfgoed.nl/> ;
     dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
@@ -21,7 +21,14 @@
 
 failure:reason a owl:ObjectProperty ;
     rdfs:label "reason"@en ;
-    rdfs:comment "The reason a sampled resource failed, given on the prov:Usage that qualifies the activity’s use of that resource. Its value is a SKOS concept from the scheme matching the check: subject-resolution-failure for a subject URI, manifest-validation-failure for an IIIF manifest. The dataset knowledge graph persists a prov:Usage – and therefore a failure:reason – only for samples that failed, so the presence of failure:reason is the contract for “this sample failed”; successful samples carry no usage and are covered by the aggregate sampled/resolved/validated counts."@en ;
+    rdfs:comment "The reason a sampled resource failed, given on the prov:Usage that qualifies the activity’s use of that resource. Its value is a SKOS concept from the scheme matching the check: subject-resolution-failure for a subject URI, manifest-validation-failure for an IIIF manifest, distribution-validity-failure for a distribution. The dataset knowledge graph persists a prov:Usage – and therefore a failure:reason – only for samples that failed, so the presence of failure:reason is the contract for “this sample failed”; successful samples carry no usage and are covered by the aggregate sampled/resolved/validated counts."@en ;
     rdfs:domain prov:Usage ;
     rdfs:range skos:Concept ;
+    rdfs:isDefinedBy <https://def.nde.nl/failure> .
+
+failure:message a owl:DatatypeProperty ;
+    rdfs:label "message"@en ;
+    rdfs:comment "A best-effort, free-text diagnostic accompanying a failure:reason on the same prov:Usage – for example the parser error a malformed RDF distribution produced. Advisory only: whether one is present, and its content, is producer- and parser-dependent, and a guaranteed line or column is not promised."@en ;
+    rdfs:domain prov:Usage ;
+    rdfs:range xsd:string ;
     rdfs:isDefinedBy <https://def.nde.nl/failure> .
