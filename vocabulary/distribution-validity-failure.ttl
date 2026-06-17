@@ -1,0 +1,33 @@
+@prefix dvf:     <https://def.nde.nl/distribution-validity-failure#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<https://def.nde.nl/distribution-validity-failure> a owl:Ontology , skos:ConceptScheme ;
+    dcterms:title "NDE Distribution Validity Failure vocabulary"@en ;
+    rdfs:label "NDE Distribution Validity Failure vocabulary"@en ;
+    dcterms:description "Reasons a distribution’s fetched content failed to validate as RDF. Serialization-agnostic: the serialization is already stated on the distribution, so it is not encoded in the reason. Used as the value of failure:reason on the prov:Usage qualifying a distribution validity measurement; the concept local names match the producer’s reason strings so a reason maps to distribution-validity-failure#${reason} with no lookup table."@en ;
+    dcterms:publisher <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:creator <https://netwerkdigitaalerfgoed.nl/> ;
+    dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    dcterms:created "2026-06-16"^^xsd:date ;
+    vann:preferredNamespacePrefix "distribution-validity-failure" ;
+    vann:preferredNamespaceUri "https://def.nde.nl/distribution-validity-failure#" ;
+    owl:versionInfo "0.1.0" .
+
+dvf:parse-error a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "parse error"@en ;
+    skos:prefLabel "parse error"@en ;
+    skos:definition "The distribution’s content could not be parsed as RDF in its declared serialization."@en ;
+    skos:inScheme <https://def.nde.nl/distribution-validity-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/distribution-validity-failure> .
+
+dvf:empty a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "empty"@en ;
+    skos:prefLabel "empty"@en ;
+    skos:definition "The distribution parsed without error but yielded no RDF triples – an empty graph or an empty body."@en ;
+    skos:inScheme <https://def.nde.nl/distribution-validity-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/distribution-validity-failure> .

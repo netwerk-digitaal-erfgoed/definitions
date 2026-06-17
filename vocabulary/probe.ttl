@@ -9,7 +9,7 @@
 <https://def.nde.nl/probe> a owl:Ontology ;
     dcterms:title "NDE Probe vocabulary"@en ;
     rdfs:label "NDE Probe vocabulary"@en ;
-    dcterms:description "Terms recording which capabilities the dataset knowledge graph detected in a dataset, such as whether it exposes media."@en ;
+    dcterms:description "Terms recording what the dataset knowledge graph observed when probing a dataset and its distributions: which capabilities it detected (such as whether it exposes media), and the source-change fingerprint observed for a distribution."@en ;
     dcterms:publisher <https://netwerkdigitaalerfgoed.nl/> ;
     dcterms:creator <https://netwerkdigitaalerfgoed.nl/> ;
     dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
@@ -33,4 +33,10 @@ probe:detects a owl:ObjectProperty ;
 probe:media a probe:Capability , owl:NamedIndividual ;
     rdfs:label "media"@en ;
     rdfs:comment "The dataset exposes media objects, for example images, thumbnails or content URLs."@en ;
+    rdfs:isDefinedBy <https://def.nde.nl/probe> .
+
+probe:sourceFingerprint a owl:DatatypeProperty ;
+    rdfs:label "source fingerprint"@en ;
+    rdfs:comment "An opaque change signal for a distribution’s source, derived from the most recent of its declared dct:modified and its HTTP Last-Modified together with its byte size. Compared only for equality, never parsed or ordered. Recorded both on a reachability observation and on a validity quality measurement so the two share one key: a validity verdict applies only while the fingerprint it was judged against still equals the currently-observed one, which is what lets a since-fixed distribution stop showing as invalid."@en ;
+    rdfs:range xsd:string ;
     rdfs:isDefinedBy <https://def.nde.nl/probe> .

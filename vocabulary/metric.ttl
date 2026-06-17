@@ -25,6 +25,12 @@ metric:schema-ap-nde-sample-conformance a dqv:Metric , owl:NamedIndividual ;
     dqv:expectedDataType xsd:boolean ;
     rdfs:isDefinedBy <https://def.nde.nl/metric> .
 
+metric:distribution-rdf-valid a dqv:Metric , owl:NamedIndividual ;
+    rdfs:label "distribution RDF valid"@en ;
+    skos:definition "Whether a distribution’s fetched content parses as RDF. Computed on the distribution’s access URL – the file itself – because validity is a property of the bytes, not of any dataset’s use of them."@en ;
+    dqv:expectedDataType xsd:boolean ;
+    rdfs:isDefinedBy <https://def.nde.nl/metric> .
+
 metric:quads-validated a dqv:Metric , owl:NamedIndividual ;
     rdfs:label "quads validated"@en ;
     skos:definition "Number of quads the validator inspected when checking the sample, a coverage indicator for the conformance result."@en ;
