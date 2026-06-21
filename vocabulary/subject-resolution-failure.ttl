@@ -9,7 +9,7 @@
 <https://def.nde.nl/subject-resolution-failure> a owl:Ontology , skos:ConceptScheme ;
     dcterms:title "NDE Subject Resolution Failure vocabulary"@en ;
     rdfs:label "NDE Subject Resolution Failure vocabulary"@en ;
-    dcterms:description "Reasons a sampled subject URI failed to resolve to a self-describing landing page when the dataset knowledge graph dereferenced it. Used as the value of failure:reason on the prov:Usage qualifying a subject-URI resolution activity."@en ;
+    dcterms:description "Reasons a sampled subject URI failed to resolve to an HTML page or RDF when the dataset knowledge graph dereferenced it. Used as the value of failure:reason on the prov:Usage qualifying a subject-URI resolution activity."@en ;
     dcterms:publisher <https://netwerkdigitaalerfgoed.nl/> ;
     dcterms:creator <https://netwerkdigitaalerfgoed.nl/> ;
     dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
@@ -42,7 +42,7 @@ srf:http-error a skos:Concept , owl:NamedIndividual ;
 srf:wrong-content-type a skos:Concept , owl:NamedIndividual ;
     rdfs:label "wrong content type"@en ;
     skos:prefLabel "wrong content type"@en ;
-    skos:definition "The subject URI returned a 2xx response whose Content-Type was not text/html, so it did not land on a human-readable landing page."@en ;
+    skos:definition "The subject URI returned a 2xx response that is neither an HTML page nor RDF (for example a JSON or plain-text error page), so it did not resolve to a usable representation."@en ;
     skos:inScheme <https://def.nde.nl/subject-resolution-failure> ;
     rdfs:isDefinedBy <https://def.nde.nl/subject-resolution-failure> .
 
@@ -50,5 +50,7 @@ srf:no-self-reference a skos:Concept , owl:NamedIndividual ;
     rdfs:label "no self-reference"@en ;
     skos:prefLabel "no self-reference"@en ;
     skos:definition "The subject URI returned an HTML landing page, but its body did not advertise the original URI, so the page does not back-reference the identifier the user followed."@en ;
+    owl:deprecated true ;
+    skos:editorialNote "Deprecated: a subject URI now resolves on any HTTP 2xx HTML or RDF response, so an HTML page that does not self-reference is no longer a failure. Whether a resolved page self-references is instead surfaced as the (positive) metric:subject-uris-html-landing-pages count. Retained so historical measurements that reference this concept stay resolvable."@en ;
     skos:inScheme <https://def.nde.nl/subject-resolution-failure> ;
     rdfs:isDefinedBy <https://def.nde.nl/subject-resolution-failure> .
