@@ -51,7 +51,13 @@ metric:subject-uris-sampled a dqv:Metric , owl:NamedIndividual ;
 
 metric:subject-uris-resolved a dqv:Metric , owl:NamedIndividual ;
     rdfs:label "subject URIs resolved"@en ;
-    skos:definition "Number of sampled subject URIs that dereferenced successfully."@en ;
+    skos:definition "Number of sampled subject URIs that dereferenced successfully to an HTTP 2xx response that is an HTML page or RDF."@en ;
+    dqv:expectedDataType xsd:integer ;
+    rdfs:isDefinedBy <https://def.nde.nl/metric> .
+
+metric:subject-uris-html-landing-pages a dqv:Metric , owl:NamedIndividual ;
+    rdfs:label "subject URIs HTML landing pages"@en ;
+    skos:definition "Number of sampled subject URIs that resolved to an HTML landing page, that is, an HTML page that references its own URI. A subset of the resolved URIs; surfaced to promote human-readable landing pages, not to gate resolution."@en ;
     dqv:expectedDataType xsd:integer ;
     rdfs:isDefinedBy <https://def.nde.nl/metric> .
 
