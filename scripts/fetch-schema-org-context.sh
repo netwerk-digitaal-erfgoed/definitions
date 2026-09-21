@@ -20,7 +20,7 @@
 set -eu
 
 CONTEXT_REPO="netwerk-digitaal-erfgoed/dataset-register"
-CONTEXT_REF="3d3af40a8d8cb807e1da1478b794b9ddfb2e890f"
+CONTEXT_REF="d9f85fa2e80d151ac74a569eed0ff9a3941f9109"
 CONTEXT_PATH="packages/core/src/schema-org-context.json"
 
 ROOT="$(CDPATH= cd "$(dirname "$0")/.." && pwd)"
