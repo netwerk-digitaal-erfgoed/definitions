@@ -8,6 +8,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl \
 COPY scripts/ scripts/
 COPY vocabulary/ vocabulary/
 RUN sh scripts/generate.sh
+# The Schema.org JSON-LD context the Dataset Register reads descriptions with, served at
+# /context.jsonld. Fetched from its single source of truth rather than copied into this
+# repository; see the script for why it is pinned to a commit.
+RUN sh scripts/fetch-schema-org-context.sh
 
 # 2. Serve the generated site with Apache content negotiation.
 FROM httpd:2.4-alpine

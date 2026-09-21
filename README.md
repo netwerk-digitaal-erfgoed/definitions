@@ -21,6 +21,26 @@ The vocabularies use **hash URIs**, so each module is a single document: the
 term `probe#detects` is defined in the document served at `/probe`, and the
 fragment selects the term in the page.
 
+## Schema.org JSON-LD context
+
+`/context.jsonld` serves the Schema.org JSON-LD context that the
+[Dataset Register](https://github.com/netwerk-digitaal-erfgoed/dataset-register) reads
+dataset descriptions with, and that publishers point their own `@context` at when they
+validate a description against the register's SHACL shapes.
+
+It is not a vocabulary: it carries `@vocab`, Schema.org's prefix declarations and the type
+coercions the shapes depend on, so `mainEntityOfPage` expands to an IRI and `dateModified`
+to a date. Schema.org's own context stopped doing that in release 30.1, and because a
+JSON-LD parser fetches the context while parsing, that reached every consumer without a
+deploy. This context imports nothing, so it resolves on its own.
+
+The file has one source of truth, `packages/core/src/schema-org-context.json` in the
+dataset-register repository, where the shapes it pairs with live.
+`scripts/fetch-schema-org-context.sh` fetches it at build time from a pinned commit rather
+than keeping a copy here. Bumping `CONTEXT_REF` in that script is how a change to the
+published context becomes deliberate: a commit, a pull request and an image build, instead
+of a silent update under everyone who imports it.
+
 ## How it is published
 
 `scripts/generate.sh` runs [WIDOCO](https://github.com/dgarijo/Widoco) over
@@ -47,6 +67,12 @@ sh scripts/generate.sh
 
 Output appears in `build/<module>/`; open `build/probe/index-en.html` in a
 browser to preview.
+
+Fetch the Schema.org context into `build/context.jsonld` (requires `curl`):
+
+```sh
+sh scripts/fetch-schema-org-context.sh
+```
 
 Build and run the full server locally:
 
