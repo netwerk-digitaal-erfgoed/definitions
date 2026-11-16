@@ -32,10 +32,24 @@ mvf:network-error a skos:Concept , owl:NamedIndividual ;
     skos:inScheme <https://def.nde.nl/manifest-validation-failure> ;
     rdfs:isDefinedBy <https://def.nde.nl/manifest-validation-failure> .
 
+mvf:refused-url a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "refused URL"@en ;
+    skos:prefLabel "refused URL"@en ;
+    skos:definition "The manifest URL, or a URL it redirected to, was not fetched because it is not a public HTTP(S) address, for example a private or loopback IP address."@en ;
+    skos:inScheme <https://def.nde.nl/manifest-validation-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/manifest-validation-failure> .
+
 mvf:http-error a skos:Concept , owl:NamedIndividual ;
     rdfs:label "HTTP error"@en ;
     skos:prefLabel "HTTP error"@en ;
     skos:definition "The manifest URL was reached but returned a non-2xx HTTP status after redirects were followed."@en ;
+    skos:inScheme <https://def.nde.nl/manifest-validation-failure> ;
+    rdfs:isDefinedBy <https://def.nde.nl/manifest-validation-failure> .
+
+mvf:too-large a skos:Concept , owl:NamedIndividual ;
+    rdfs:label "too large"@en ;
+    skos:prefLabel "too large"@en ;
+    skos:definition "The manifest URL returned a response body larger than the validator reads (20 MiB), so it was not parsed."@en ;
     skos:inScheme <https://def.nde.nl/manifest-validation-failure> ;
     rdfs:isDefinedBy <https://def.nde.nl/manifest-validation-failure> .
 
